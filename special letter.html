@@ -2,67 +2,70 @@
 <html>
 <head>
 <style>
-.color-1 {
-    color: #0099cc;
-    text-shadow: 2px 2px 4px #000000;
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
 }
 
-.color-2 {
-    color: #cc6600;
-    text-shadow: 2px 2px 4px #000000;
+.game {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 50px auto;
 }
 
-.color-3 {
-    color: #66cc66;
-    text-shadow: 2px 2px 4px #000000;
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s;
 }
 
-.background-color {
-    background-color: #ffcc99;
-}
-
-.bold-text {
-    font-weight: bold;
-}
-
-.italic-text {
-    font-style: italic;
-}
-
-.border {
-    border: 2px solid #000000;
-    padding: 10px;
-}
-
-.margin {
-    margin: 10px;
-}
-
-.special-font {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+button:hover {
+    background-color: #45a049;
 }
 </style>
 </head>
-<body class="background-color">
+<body>
 
-<h1 class="color-1 bold-text">My Girlfriend</h1>
+<div class="game">
+ <h2>Guess the number</h2>
+ <p>Try to guess the number I'm thinking of!</p>
+ <button onclick="playGame()">Play</button>
+</div>
 
-<p class="color-2 italic-text">Hey Beautiful,</p>
+<script>
+var number = Math.floor(Math.random() * 100) + 1;
+var guesses = document.createElement("p");
+guesses.textContent = "Guesses so far: ";
 
-<p class="color-3 special-font">You're one of a kind. I can't believe I get to be with someone so amazing. I know it's corny, but every time I see you, I'm reminded of the words in John Lennon's Imagine:</p>
-
-<p class="color-2 bold-text">
-"Imagine all the people living life in peace. <br>
-You may say that I'm a dreamer, but I'm not the only one. <br>
-I hope someday you'll join us, and the world will be as one." <br>
-</p>
-
-<p class="color-3 special-font margin">
-You make my life more vivid and colorful, and for that, I am forever grateful. I hope this letter conveys just a fraction of the feelings in my heart for you. You deserve the whole world and more. I love you so much. <br>
-<br>
-All My Love, <br>
-[Your Name]
-</p>
+function playGame() {
+ var guess = parseInt(prompt("Guess a number between 1 and 100"));
+  
+ while (guess != number) {
+    if (guess === null) {
+      alert("No more guesses! The number was " + number + ".");
+      break;
+    }
+    else if (guess > number) {
+      guess = parseInt(prompt("Too high! Guess again."));
+    }
+    else {
+      guess = parseInt(prompt("Too low! Guess again."));
+    }
+ }
+  
+ if (guess === number) {
+    alert("Congratulations! You guessed the correct number.");
+ }
+}
+</script>
 
 </body>
 </html>
