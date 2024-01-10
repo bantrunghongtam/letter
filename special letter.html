@@ -35,34 +35,33 @@ button:hover {
 <body>
 
 <div class="game">
- <h2>Guess the number</h2>
- <p>Try to guess the number I'm thinking of!</p>
+ <h2>Gift: Letter from [Your Name]</h2>
+ <p>Your girlfriend received a special gift: a letter from you. Try to guess the words from your letter. Here's a hint: <i>"[Insert a word from your letter here]"</i></p>
  <button onclick="playGame()">Play</button>
 </div>
 
 <script>
-var number = Math.floor(Math.random() * 100) + 1;
+var letterWords = ["word1", "word2", "word3"];
 var guesses = document.createElement("p");
 guesses.textContent = "Guesses so far: ";
 
 function playGame() {
- var guess = parseInt(prompt("Guess a number between 1 and 100"));
+ var randomWord = letterWords[Math.floor(Math.random() * letterWords.length)];
   
- while (guess != number) {
+ var guess = prompt("Guess a word from my letter! Hint: " + randomWord.charAt(0).toUpperCase() + randomWord.slice(1));
+  
+ while (guess != randomWord) {
     if (guess === null) {
-      alert("No more guesses! The number was " + number + ".");
+      alert("No more guesses! The word was " + randomWord + ".");
       break;
     }
-    else if (guess > number) {
-      guess = parseInt(prompt("Too high! Guess again."));
-    }
     else {
-      guess = parseInt(prompt("Too low! Guess again."));
+      guess = prompt("That's not correct! Try again.");
     }
  }
   
- if (guess === number) {
-    alert("Congratulations! You guessed the correct number.");
+ if (guess === randomWord) {
+    alert("Congratulations! You guessed the correct word from my letter.");
  }
 }
 </script>
